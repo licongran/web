@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>百度注册页面</title>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript" src="js/check.js"></script>
+</head>
+
+<body background="images/1.gif">
+<div class="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <form action="success.html" method="post" name="myform" onsubmit="return check()">
+  <tr>
+    <td class="left">用户名：</td>
+    <td><input id="user" type="text"  class="inputs"/><div id="userId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">密码：</td>
+    <td><input id="pwd" type="password"  class="inputs"/><div id="pwdId" class="red"></div></td>
+  <tr>
+    <td class="left">确认密码：</td>
+    <td><input id="repwd" type="password"  class="inputs"/><div id="repwdId" class="red"></div></td>
+  </tr>
+  <tr>
+   <tr>
+    <td class="left">性别：</td>
+    <td><div style="float:left;"><input name="sex" type="radio" value="男" />男 <input name="sex" type="radio" value="女" />女</div>
+    <div id="sexId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">电子邮件地址</td>
+    <td><input id="email" type="text"  class="inputs"/><div id="emailId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">出生日期：</td>
+    <td><select id="year">
+    <script type="text/javascript">
+	for(var i=1900;i<=2009;i++){
+	document.write("<option value="+i+">"+i+"</option>");	
+		}
+	</script>
+    </select>年
+    <select id="month">
+    <script type="text/javascript">
+	for(var i=1;i<=12;i++){
+	document.write("<option value="+i+">"+i+"</option>");	
+		}
+	</script>
+    </select>月
+    <select id="day">
+    <script type="text/javascript">
+	for(var i=1;i<=31;i++){
+	document.write("<option value="+i+">"+i+"</option>");	
+		}
+	</script>
+    </select>日</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="sub" type="submit" value="注册" /> <input name="cancel" type="reset" value="清除" /></td>
+  </tr>
+  </form>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>海报画廊特效</title>
+	<style type="text/css">
+		/*@font-face{//引用字体
+			font-family: 'icons';//我们定义的字体名称
+			src:url(.....) format('waff');//地址来源和字体后缀，网络地址为https://什么的
+			font-weight: normal;//使用默认就好
+			font-size: normal;
+		}*/
+		*{padding:0;margin: 0;}
+		body{
+			background: #fff;
+			color: #555;
+			font-family: 'Avenir Next','Lantinghei SC';
+			font-size: 14px;
+			-webkit-font-smoothing:antialiased;/*字体平滑*/
+		}
+		.wrap{
+			position: absolute;
+			width: 100%;
+			height: 500px;
+			top:50%;
+			margin-top: -250px;
+			background-color:#333;
+			overflow: hidden;
+			-webkit-perspective:800px;/*使子元素获得3D属性*/
+		}
+		/*海报属性*/
+		.photo{
+			position: absolute;
+			width: 260px;
+			height: 320px;
+			z-index: 1;
+			box-shadow: 0 0 1px rgba(0,0,0,.01);
+			-webkit-transition:all 1s;
+		}
+		.photo .side{
+			width: 100%;
+			height: 100%;
+			background-color: #999;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 20px;
+			box-sizing: border-box;/*内容和padding都会在盒子边框内呈现*/
+		}
+		.photo .side-front .image{
+			width: 100%;
+			height: 250px;
+			line-height: 250px;
+			overflow: hidden;
+		}
+		.photo .side-front .image img{
+			width: 100%;
+		}
+		.photo .side-front .caption{
+			text-align: center;
+			font-size: 12px;
+			line-height: 50px;
+		}
+		.photo .side-back .desc{
+			color:#333;
+			font-size: 12px;
+			line-height: 1.5em;
+		}
+		/*中间的海报*/
+		.photo_center{
+			/*出现在中间的海报设置水平垂直居中*/
+			top: 50%;
+			left: 50%;
+			margin: -160px 0 0 -130px;
+			z-index: 99;
+		}
+		/*负责翻转的属性*/
+		.photo_wrap{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			-webkit-transform-style:preserve-3d;
+
+			-webkit-transition:all 0.6s;
+		}
+		.photo_wrap .side-front{
+			-webkit-transform:rotateY(0deg);
+		}
+		.photo_wrap .side-back{
+			-webkit-transform:rotateY(180deg);
+		}
+		.photo_wrap .side{
+			-webkit-backface-visibility:hidden;
+		}
+		.photo_front .photo_wrap{
+			-webkit-transform:rotateY(0deg);
+		}
+		.photo_back .photo_wrap{
+			-webkit-transform:rotateY(180deg);
+		}
+
+		/*导航栏样式*/
+		.nav{
+			width: 80%;
+			height: 30px;
+			line-height: 30px;
+			position: absolute;
+			left: 10%;
+			bottom: 20px;
+			text-align: center;
+			z-index: 999;
+		}
+		.nav .i{
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			cursor: pointer;
+			background: #aaa;
+			border-radius:50%;
+
+			-webkit-transform:scale(.4);
+			-webkit-transition:all 0.6s;
+		}
+		/*
+		.nav .i:after{//使用伪类在每个span下添加字体
+			content: "\e600";//添加内容为\e600，必须添加下面那句话content才会有意义
+			font-family: 'icons';
+			font-size: 80%;
+			display: inline-block;
+			line-height: 30px;
+			color: #fff;
+			text-align: center;
+		}
+		*/
+		/*选中正面*/
+		.nav .i_current{
+			-webkit-transform:scale(1);
+		}
+		/*选中背面*/
+		.nav .i_back{
+			-webkit-transform:rotateY(-180deg);
+			background: #000;
+		}
+
+		/*优化代码处*/
+		.photo{
+			top: 50%;
+			left: 50%;
+			margin: -160px 0 0 -130px;
+		}
+
+		.photo_wrap{
+			-webkit-transform-origin:0% 50%;
+		}
+		.photo_front .photo_wrap{
+			-webkit-transform:translate(0px,0px) rotateY(0deg);
+		}
+		.photo_back .photo_wrap{
+			-webkit-transform:translate(260px,0px) rotateY(180deg);
+		}
+	</style>
+</head>
+<body onselectstart="return false" background="images/head4.png">
+<div class="wrap" id="wrap">
+	<!-- photo负责平移旋转 -->
+	<!-- 2数据模板替换 -->
+	<div class="photo photo_front" id="photo_{{index}}" onclick="turn(this)">
+		<!-- photo_wrap负责翻转 -->
+		<div class="photo_wrap">
+			<div class="side side-front">
+				<p class="image"><img src="images/{{img}}"></p>
+				<p class="caption">{{caption}}</p>
+			</div>
+			<div class="side side-back">
+				<p class="desc">{{desc}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/1.js"></script>
+<script>
+<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.0.min.js"></script>
+<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+    L2Dwidget.init({"display": {
+        "superSample": 2,
+        "width": 200,
+        "height": 400,
+             "position": "right",
+                 "hOffset": 0,
+        "vOffset": 0
+          }
+     });
+</script>
+
+
+</body>
+</html>

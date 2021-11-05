@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title></title>
+	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+		.g{
+			background-color: #000;
+			background-size: 100% 100%;
+		}
+	</style>
+<style type="text/css">  
+*{margin:0;padding:0;}
+#bg{
+position:absolute;
+top:0px;
+left:0px;
+z-index:-999;
+}
+</style>
+	<style type="text/css">
+            form
+            {
+                width:100%;
+                height:100%;
+                margin-top: 0px;
+            }
+            
+            h2
+            {
+                font-family: "微软雅黑";
+            	font-size: 40px;
+                color:black;
+            }
+            #log
+            {
+                color:blue;
+            }
+            input
+            {
+            	background: rgba(255,255,255,0.5);
+            }
+        </style>
+</head>
+
+<body id="head" class="slider"> 
+<div class="background">
+<div class="box">
+	<ol id="ol" class="list">
+	</ol>
+</div>
+<form action="web/success.html" name="login" method="post" name="myform" onsubmit="return check()">
+            <center>
+            <div>
+            <h2>
+                    	欢迎Welcom！
+            </h2>
+            <p>
+                用户名:<input id="user" type="text"  class="inputs"/><div id="userId" class="red"></div>
+            </p>
+            <p>
+                密&emsp;码:<input id="pwd" type="password"  class="inputs"/><div id="pwdId" class="red"></div>
+            </p>
+            <p>
+                <input id="log" type="submit" value="登录" />
+            </p>
+            <p>
+                还没有账号？<a href="web/register/register.html">立即注册</a>
+            </p>
+            </div>
+            </center>
+        </form>
+</div>
+</body>
+<script src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.0.min.js"></script>
+<script type="text/javascript" charset="utf-8"  src="js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+    L2Dwidget.init({"display": {
+        "superSample": 2,
+        "width": 200,
+        "height": 400,
+             "position": "right",
+                 "hOffset": 0,
+        "vOffset": 0
+          }
+     });
+</script>
+</html>
